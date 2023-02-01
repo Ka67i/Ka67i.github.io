@@ -1,424 +1,122 @@
-body {
-    margin: 20px;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    vertical-align: middle;
-    
-    font-family: "ahamono-regular","Helvetica Neue",
-        Helvetica,sans-serif, "Exo", sans-serif;
-    /*    font-family: "Menlo", "Meslo LG", monospace; */
-    /*    color: #fff;    */
-    background: linear-gradient(-45deg, #ee7752, #e73c7e,#23a6d5,  #23d5c6);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    border-radius: 50px;
-    font-size: 150%;
-    <!-- -webkit-text-stroke: 2px orange; -->
-    user-select: none;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding: 10rem;
-}
-
-.container {
-    border: 5px solid limegreen;
-    width: min(100% - 2rem, 600px);
-    margin-inline: auto;
-}
-
-abbr {
-  display: inline;
-  padding: 35px;
-}
-
-fieldset {
-    text-align: center;
-}
-
-:root {
-  --bg: hsl(200 50% 5%);
-  --fg: hsl(0 0% 100%);
-  --fc: hsl(0 0% 100%);
-  --accent: hsl(250 75% 80%);
-  -- 
-}
-
-:root:has(.theme > [value="light"]:checked) {
-  --fg: hsl(200 50% 10%);
-  --bg: hsl(200 10% 92%);
-  --accent: hsl(250 75% 40%);
-}
-
-:root:has(.theme > [value="rainbow"]:checked) {
-  --fg: hsl(147 50% 47%);
-  --bg: linear-gradient(-45deg, #ee7752, #e73c7e,#23a6d5,  #23d5c6);
-  --accent: hsl(250 75% 40%);
-}
-
-html:has(:modal) {
-  overflow: hidden;
-  padding-inline-end: 16px;
-}
-
-.form-group:has(:not(:placeholder-shown):valid) > label {
-  color: forestgreen;
-}
-
-.grid-columns {
-  display: grid;
-  gap: 1rem;
-
-  grid-template-columns: repeat(var(--col-count, 1), 1fr);
-}
-
-// has 2 children
-.grid-columns:has(:nth-child(2):is(:last-child)) {
-  --col-count: 2;
-}
-
-.grid-columns:has(:nth-child(2):is(:last-child)) :last-child {
-  --col-count: 2;
-  color: red;
-}
-
-// child count can be divided by 3
-.grid-columns:has(:nth-child(3n):is(:last-child)) {
-  --col-count: 3;
-}
-
-.grid-columns:has(:nth-child(3n):is(:last-child)) :last-child {
-  color: pink;
-}
-
-// child count can be divided by 4
-.grid-columns:has(:nth-child(4n):is(:last-child)) {
-  --col-count: 4;
-}
-
-// child count can be divided by 5
-.grid-columns:has(:nth-child(5n):is(:last-child)) {
-  outline: 3px solid lime;
-  --col-count: 2;
-}
-
-// 5th child is the last child, span the full space
-.grid-columns:has(:nth-child(5):is(:last-child)) > :last-child {
-  grid-column: 1 / -1;
-}
-
-.carousel {
-  display: grid;
-  gap: 1rem;
-  margin-block: 2rem;
-  padding-block: 2rem;
-}
-
-.carousel > img {
-  width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-}
-
-.carousel:not(:has(:nth-child(5))) {
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-}
-
-.carousel:has(:nth-child(5)) {
-  grid-auto-flow: column;
-  grid-auto-columns: 20%;
-  overflow-x: scroll;
-  padding-block: 2rem;
-}
-
-/* general styling */
-
-body {
-  font-family: system-ui;
-  font-size: 1.5rem;
-  padding: 2rem;
-  background: var(--bg);
-  color: var(--fg);
-}
-
-:modal::backdrop {
-  background: rgb(0 0 0 / 0.5);
-}
-
-.example-modal > form {
-  display: grid;
-  gap: 1rem;
-  margin-block-start: 1rem;
-}
-
-.form-group {
-  display: grid;
-  place-items: start;
-}
-
-article {
-  max-width: 50rem;
-  margin-inline: auto;
-}
-
-article + article {
-  border-block-start: 2px solid hsl(200 10% 20%);
-  margin-block-start: 4rem;
-  padding-block-start: 4rem;
-}
-
-.article__title {
-  color: var(--accent);
-  margin: 0;
-}
-
-.article__subtitle {
-  margin: 0;
-  font-size: 1.75rem;
-  font-weight: 600;
-  margin-block-end: 5rem;
-}
-
-img {
-  max-width: 100%;
-}
-
-.full-screen {
-  padding-block: 5rem;
-}
-
-
-.cookie-consent{
-  position: fixed;
-bottom: 8px;
-left: 20px;
-width: 260px;
-padding-top: 7px;
-height: 83px;
-color: #fff;
-
-line-height: 20px;
-padding-left: 10px;
-padding-right: 10px;
-font-size: 14px;
-background: #292929;
-z-index: 120;
-cursor: pointer;
-border-radius: 3px;
-}
-
-.allow-button{
-    height: 20px;
-    width: 104px;
-    color: #fff;
-    font-size: 12px;
-    line-height: 10px;
-    border-radius: 3px;
-    border: 1px solid green;
-    background-color: green;
-}
-
-input {
-    border-radius: 25rem;
-}
-
-input:hover {
-    background-color: #ffccff;
-}
-
-@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-form{
-    border-radius: 50px;
-    margin: 20px;
-    
-}
-
-form fieldset p {
-    display:inline;
-    text-align: left;
-}
-
-.align {
-    margin: auto;
-    width: 50%;
-    text-align: left;
-    padding: 10px;
-}
-
-.circle img {
-    border-radius: 50%;
-}
-
-p {
-    text-align: left;
-}
-
-fieldset p {
-    text-align: left;
-}
-
-img {
-    border-radius: 50%;
-}
-
-::selection {
-    background-color: rgba(228, 99, 82, 1);
-    color: white;
-}
-
-.modal {
-  // padding: 1em;
-  max-width: 50ch;
-  // border: 0;
-  // box-shadow: 0 0 1em rgb(0 0 0 / .3);
-
-  & > * {
-    margin: 0 0 0.5rem 0;
-  }
-}
-
-.modal::backdrop {
-  background: rgb(0 0 0 / 0.4);
-}
-
-/* extra styling */
-
-body {
-  min-height: 100vh;
-  margin: 2rem;
-  font-family: system-ui;
-  font-size: 1.25rem;
-  line-height: 1.5;
-  color: var(--gray-8);
-  // background-image: url('https://images.unsplash.com/photo-1644242629712-943ae5c8c4f3?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0Njc1MjQxNA&ixlib=rb-1.2.1&q=85');
-  // background-size: cover;
-}
-
-h1 em {
-  color: var(--cyan-9);
-  text-decoration: underline;
-  text-underline-offset: 0.25em;
-}
-
-.button {
-  border: 0;
-  cursor: pointer;
-  background: var(--gray-8);
-  color: var(--gray-2);
-  font-weight: 700;
-  padding: var(--size-2) var(--size-4);
-}
-
-.button:hover,
-.button:focus {
-  background: var(--cyan-9);
-}
-
-form {
-  display: grid;
-  gap: 1em;
-}
-
-.modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px solid black;
-    border-radius: 10px;
-    z-index: 10;
-    background-color: white;
-    width: 500px;
-    max-width:80%
-}
-
-:visited {
-    color: pink;
-}
-
-.box {
-    margin: 50px;
-    width: 200px;
-    height: 200px;
-    background: pink;
-}
-
-.box.small {
-    scale: .5;
-}
-
-.box.moved {
-    translate: 50px;
-}
-
-.box:hover {
-    animation: roate 500ms infitnte aliternate;
-}
-
-@keyframe rotate {
-    0% {
-        rotate: 0;
-    }
-    
-    100% {
-        rotate: 45deg;
-    }
-}
-
-.inputBox {
-    position: relative;
-    width: 450px;
-}
-.inputBox h2 {
-    font-size: 28px;
-    color: #333;
-}
-inputbox input {
-    position: relative;
-    width: 100%;
-    height: 60px;
-    border: none;
-    margin: 15px 0 20px;
-    background: transparent;
-    outline: none;
-    padding: 0 20px;
-    font-size: 24px;
-    letter-spacing: 4px;
-    box-sizing: border-box;
-    border-radius: 8px;
-    color: #333;
-    box-shadow: -4px -4px 10px rgba(255,255,255,1),
-                inset 4px 4px 10px rgba(0,0,0,0.05),
-                inset 4px 4px 10px rgba(255,255,255,1),
-                4px 4px 10px rgba(0,0,0,0.05)
-}
-.inputBox input::placeholder {
-    letter-spacing: 0px;
-}
-.inputBox #btn {
-    position: relative;
-    cursor: pointer;
-    color: #fff;
-    background: #333;
-    font-size: 24px;
-    display: inline-block;
-    padding: 10px 15px;
-    border-radius: 8px;
-}
-.inputBox #btn:active {
-    background: #9c27b0;
-
-
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>personal website</title>
+        <meta name="description" content="My personal website with a brieflook into my past projects">
+        <meta property="og:title" content="person website">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://Ka67i.github.io./">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="pagetopic" content="profolio">
+        <meta property="og:site_name" content="My personal profolio">
+        <meta property="article:author" content="Ka67i">
+        <meta property="og:description" content="My personal website with a brieflook into my past projects">
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <nav>
+            <a href="#year1">Year 1</a>
+            <a href="#year2">Year 2</a>
+            <a href="#year3">Year 3</a>
+
+            <select class="theme" name="" id="">
+                <option value="dark">dark</option>
+                <option value="light">light</option>
+                <option value="rainbow">rainbow</option>
+            </select>
+        </nav>
+        
+        <article id="year1">
+            <article>
+                <h1 class="article__title">118COM</code></h1>
+                <p>
+                    description
+                </p>
+                <p>
+                    role
+                </p>
+            </article>
+            <article>
+                <h1 class="article__title">119COM</code></h1>
+                <p>
+                    description
+                </p>
+                <p>
+                    role
+                </p>
+            </article>
+            <article>
+                <h1 class="article__title">120COM</code></h1>
+                <p>
+                    description
+                </p>
+                <p>
+                    role
+                </p>
+            </article>
+        </article>
+
+        <article id="year2">
+            <article>
+                <h1 class="article__title">201COM</code></h1>
+                <p>
+                    description
+                </p>
+                <p>
+                    role
+                </p>
+            </article>
+            <article>
+                <h1 class="article__title">202COM</code></h1>
+                <p>
+                    description
+                </p>
+                <p>
+                    role
+                </p>
+            </article>
+            <article>
+                <h1 class="article__title">220COM</code></h1>
+                <p>
+                    description
+                </p>
+                <p>
+                    role
+                </p>
+            </article>
+        </article>
+        
+        <article id="year3">
+            <article>
+                <h1 class="article__title">301COM</code></h1>
+                <p>
+                    description
+                </p>
+                <p>
+                    role
+                </p>
+            </article>
+            <article>
+                <h1 class="article__title">330COM</code></h1>
+                <p>
+                    description
+                </p>
+                <p>
+                    role
+                </p>
+            </article>
+            <article>
+                <h1 class="article__title">304COM</code></h1>
+                <p>
+                    description
+                </p>
+                <p>
+                    role
+                </p>
+            </article>
+        </article>
+    </body>
+</html>
