@@ -96,8 +96,14 @@ img {
 }
 
 
-
-
+aside {
+    width: 30%;
+    padding-left: 15px;
+    margin-left: 15px;
+    float: right;
+    font-style: italic;
+    backdrop-filter: blur(10px);
+  }
 
 input {
     border-radius: 25rem;
